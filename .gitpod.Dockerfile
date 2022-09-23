@@ -1,4 +1,4 @@
-FROM gitpod/workspace-rust
+FROM gitpod/workspace-base
 # Install custom tools, runtimes, etc.
 # For example "bastet", a command-line tetris clone:
 # RUN brew install bastet
@@ -38,7 +38,7 @@ RUN gem install --no-document fpm
 
 USER ${UID}:${GID}
 WORKDIR /home/${USER}
-#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
 ENV PATH="/home/${USER}/.cargo/bin:${PATH}"
 
 RUN cargo install cargo-pgx
